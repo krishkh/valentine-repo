@@ -3,6 +3,15 @@ import React, { useState, useEffect } from "react";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { Heart, Star, Music, Coffee, Camera, X } from "lucide-react";
 
+// Move phases outside component
+const PHASES = [
+  { scale: 1, rotate: 0 },
+  { scale: 1.1, rotate: 5 },
+  { scale: 0.9, rotate: -5 },
+  { scale: 1.2, rotate: 10 },
+  { scale: 0.8, rotate: -10 },
+];
+
 const DateProposalApp = () => {
   const [yesPressed, setYesPressed] = useState(false);
   const [noAttempts, setNoAttempts] = useState(0);
@@ -17,6 +26,7 @@ const DateProposalApp = () => {
     { icon: Star, text: "Stargazing Picnic ✨" },
   ]);
   const [showGif, setShowGif] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   const messages = [
     "Will you go on a date with me? 🌹",
@@ -63,19 +73,19 @@ const DateProposalApp = () => {
     setTimeout(() => setShowGif(true), 500);
   };
 
-  const phases = [
-    { scale: 1, rotate: 0 },
-    { scale: 1.1, rotate: 5 },
-    { scale: 0.9, rotate: -5 },
-    { scale: 1.2, rotate: 10 },
-    { scale: 0.8, rotate: -10 },
-  ];
-
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentPhase((prev) => (prev + 1) % phases.length);
+      setCurrentPhase((prev) => (prev + 1) % PHASES.length);
     }, 2000);
     return () => clearInterval(interval);
+  }, []); // Now this is fine because PHASES is constant
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
@@ -86,10 +96,10 @@ const DateProposalApp = () => {
           <motion.div
             key={i}
             className="absolute pointer-events-none"
-            initial={{ y: "100vh", x: Math.random() * window.innerWidth }}
+            initial={{ y: "100vh", x: Math.random() * windowWidth }}
             animate={{
               y: "-20vh",
-              x: Math.random() * window.innerWidth,
+              x: Math.random() * windowWidth,
               rotate: 360,
             }}
             exit={{ opacity: 0 }}
@@ -110,8 +120,8 @@ const DateProposalApp = () => {
         className="relative bg-white/90 backdrop-blur-sm rounded-xl shadow-2xl p-8 m-4 max-w-md w-full border-2 border-rose-200"
         initial={{ scale: 0 }}
         animate={{
-          scale: phases[currentPhase].scale,
-          rotate: phases[currentPhase].rotate,
+          scale: PHASES[currentPhase].scale,
+          rotate: PHASES[currentPhase].rotate,
         }}
         transition={{ type: "spring", bounce: 0.5 }}
       >
