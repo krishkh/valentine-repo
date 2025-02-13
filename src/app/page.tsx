@@ -4,7 +4,6 @@ import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { Heart, Star, Music, Coffee, Camera, X } from "lucide-react";
 
 const DateProposalApp = () => {
-  const [noButtonPosition, setNoButtonPosition] = useState({ x: 0, y: 0 });
   const [yesPressed, setYesPressed] = useState(false);
   const [noAttempts, setNoAttempts] = useState(0);
   const [showMiniGame, setShowMiniGame] = useState(false);
@@ -246,7 +245,7 @@ const DateProposalApp = () => {
               Yay! This will be amazing! 🌹
             </h1>
             <p className="text-xl text-rose-500">
-              Let's make it unforgettable...
+              Let&apos;s make it unforgettable...
             </p>
 
             <motion.div className="grid grid-cols-2 gap-4 mt-6">
