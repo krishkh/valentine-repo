@@ -44,13 +44,13 @@ const DateProposalApp = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const messages = [
-    "hi do u love me? 🌹",
-    "plz love me! ✨",
-    "can u not love me? </3333333",
-    "i ll let u lick my feet! 🍞",
-    "I'll even wear my fancy gaming socks... 🧦",
+    "Hey nigga 🌹",
+    "dont say no! ✨",
+    "why are you saying no to me??? </3333333",
+    "i ll let u lick my feet if you say yes! 🍞",
+    "JUST CLICK ON YES... 🧦",
     "C'mon, I've been practicing my jaw! 🎯",
-    "CATCH MY HEARTS YOU LOSER 💖",
+    "CATCH MY HEARTS YOU LOSER AND CLICK ON THE FUCKING YES 💖",
   ];
 
   const handleMouseEnter = async () => {
