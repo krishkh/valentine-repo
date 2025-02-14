@@ -44,13 +44,13 @@ const DateProposalApp = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const messages = [
-    "Will you go on a date with me? 🌹",
-    "I'd love to get to know you better... ✨",
-    "Come on, it'll be fun! 🌟",
-    "I promise it'll be amazing! 🎵",
-    "Let's create some memories... 💫",
-    "Just give me a chance... 🎯",
-    "Catch these hearts first! 💖",
+    "Hey you! Wanna go on a date with this goofball? 🌹",
+    "Pretty pleaseee with sprinkles and memes on top! ✨",
+    "I promise I won't talk about Minecraft... much 🤪",
+    "We can share garlic bread and terrible jokes! 🍞",
+    "I'll even wear my fancy gaming socks... 🧦",
+    "C'mon, I've been practicing my dad jokes! 🎯",
+    "Fine, catch these hearts first, you little rascal! 💖",
   ];
 
   const handleMouseEnter = async () => {
